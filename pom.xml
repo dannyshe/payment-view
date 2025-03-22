@@ -44,18 +44,6 @@
                 <version>1.18.2</version>
             </dependency>-->
 
-            <dependency>
-                <groupId>com.yy.paymentacceptance.common</groupId>
-                <artifactId>paymentcommon-lib</artifactId>
-                <version>${paymentacceptance.common.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.yy.paymentacceptance.common</groupId>
-                <artifactId>paymentcommon-api</artifactId>
-                <version>${paymentacceptance.common.version}</version>
-            </dependency>
-
             <!-- KMS           -->
             <dependency>
                 <groupId>com.amazonaws</groupId>
@@ -76,23 +64,6 @@
 
         </dependencies>
     </dependencyManagement>
-
-
-
-
-
-
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>music-public</id>
-            <url>http://nexus.yy.com/music/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>music-public</id>
-            <url>http://nexus.yy.com/music/content/repositories/releases/</url>
-        </repository>
-    </distributionManagement>
 
     <!--<repositories>
         <repository>

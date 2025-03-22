@@ -7,4 +7,4 @@ CONSUL_HOST: 10.178.85.227
 
 
 REDIS_MASTER: xpay_redis_test_gz_001
-REDIS_NODES: "grouptest1007-nw-sz-sentinel.yy.com:20008,grouptest1007-nw-sz-sentinel.yy.com:20008,grouptest1007-nw-bj-sentinel.yy.com:20008"
+REDIS_NODES: "grouptest1007-nw-sz-sentinel.siupay.com:20008,grouptest1007-nw-sz-sentinel.siupay.com:20008,grouptest1007-nw-bj-sentinel.siupay.com:20008"

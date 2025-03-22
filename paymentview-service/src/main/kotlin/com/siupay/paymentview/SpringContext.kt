@@ -1,4 +1,4 @@
-package com.yy.paymentacceptance.datacleaning
+package com.siupay.paymentview
 
 import org.springframework.beans.BeansException
 import org.springframework.context.ApplicationContext

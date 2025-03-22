@@ -154,16 +154,4 @@
         </plugins>
     </build>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>music-public</id>
-            <url>http://nexus.yy.com/music/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>music-public</id>
-            <url>http://nexus.yy.com/music/content/repositories/releases/</url>
-        </repository>
-    </distributionManagement>
-
-
 </project>
