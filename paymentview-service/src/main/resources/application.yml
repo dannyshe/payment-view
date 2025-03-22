@@ -16,12 +16,15 @@ spring:
     database: 0
     host: middleware.siupay.com
     port: 6379
+  kafka:
+    bootstrap-servers: middleware.siupay.com:9092
   cloud:
     stream:
       kafka:
         binder:
           brokers: middleware.siupay.com:9092
           autoCreateTopics: false
+          # 删除 configuration 部分
       bindings:
         input:
           destination: PAYMENT_ACCEPTANCE_TOPIC
