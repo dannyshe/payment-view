@@ -1,12 +1,22 @@
 SERVER_IP: ${spring.cloud.client.ip-address}
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${SERVER_PORT:8081}
   ip: ${SERVER_IP}
   zone: ${ZONE:default}
 
 spring:
   redis:
-    sentinel:
+    timeout: 50000ms
+    lettuce:
+      pool:
+        max-active: 16
+        max-idle: 8
+        min-idle: 2
+        max-wait: 50000ms
+    database: 0
+    host: local.middleware.com
+    port: 6379
+  sentinel:
       master: ${REDIS_MASTER:mymaster}
       nodes: ${REDIS_NODES}
   flyway:
