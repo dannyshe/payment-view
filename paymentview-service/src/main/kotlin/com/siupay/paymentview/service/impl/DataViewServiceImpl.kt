@@ -119,7 +119,7 @@ class DataViewServiceImpl(
         //展示的维度 1 10min   2 小时   3 天
         val keyList = ArrayList<String>()
         val zoneId = ZoneId.of("UTC")
-        val df = DateTimeFormatter.ofPattern(.siupay.yMMddHHmm")
+        val df = DateTimeFormatter.ofPattern("yyyyMMddHHmm")
         if (searchDay!=null&&searchDay.length==8){
             val year = searchDay.substring(0,4).toInt()
             val month = searchDay.substring(4,6).toInt()
@@ -203,7 +203,7 @@ class DataViewServiceImpl(
 
     fun getKey(): String {
         val zoneId = ZoneId.of("UTC")
-        val df = DateTimeFormatter.ofPattern(.siupay.yMMddHHmm")
+        val df = DateTimeFormatter.ofPattern("yyyyMMddHHmm")
         val localDateTime: ZonedDateTime = LocalDateTime.now().atZone(zoneId)
         val timeFormat = df.format(localDateTime)
         return "day" + timeFormat.substring(0, 8)
@@ -291,7 +291,7 @@ class DataViewServiceImpl(
     fun getKeyList3(): ArrayList<String> {
         val keyList = ArrayList<String>()
         val zoneId = ZoneId.of("UTC")
-        val df = DateTimeFormatter.ofPattern(.siupay.yMMddHHmm")
+        val df = DateTimeFormatter.ofPattern("yyyyMMddHHmm")
         val localDateTime: ZonedDateTime = LocalDateTime.now().atZone(zoneId)
         val localDateTime1: ZonedDateTime = localDateTime.withHour(0).withMinute(0).withSecond(0)
         val localDateTime2: ZonedDateTime = localDateTime1.minusDays(1)
