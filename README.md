@@ -1,2 +1,3 @@
-# payment-view
-Payment Review Service
+# PaymentView
+
+Backend end service of payment dashboard

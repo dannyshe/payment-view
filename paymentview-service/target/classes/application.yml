@@ -1,0 +1,66 @@
+SERVER_IP: ${spring.cloud.client.ip-address}
+server:
+  port: ${SERVER_PORT:8080}
+  ip: ${SERVER_IP}
+  zone: ${ZONE:default}
+
+spring:
+  redis:
+    sentinel:
+      master: ${REDIS_MASTER:mymaster}
+      nodes: ${REDIS_NODES}
+  flyway:
+    enabled: false
+  cloud:
+    consul:
+      discovery:
+        enabled: true
+        register: true
+        preferIpAddress: true
+        ipAddress: ${server.ip}
+        hostname: ${server.ip}
+        serviceName: ${spring.application.name}
+        healthCheckUrl: http://${server.ip}:${server.port}/actuator/health
+        healthCheckInterval: 15s
+        instanceId: ${spring.application.name}#${server.ip}-${server.port}
+        instanceZone: ${server.zone}
+        tags: v=${spring.application.name}
+    loadbalancer:
+      ribbon:
+        enabled: true
+    stream:
+      bindings:
+        #      output:
+        #        destination: ${PAYMENT_ACCEPTANCE_TOPIC}
+        input:
+          destination: ${PAYMENT_ACCEPTANCE_TOPIC}
+          group: ${PAYMENT_ACCEPTANCE_TOPIC}-paymentview
+          consume:
+            autoCommitOffset: false
+            concurrency: 1
+            partitioned: false
+      instance-count: 2
+      kafka:
+        bindings:
+          input:
+            consumer:
+              autoCommitOffset: false
+        binder:
+          brokers: ${PAYMENT_ACCEPTANCE_BROKERS}
+        #        auto-create-topics: true
+        listener:
+          concurrency: 3
+
+
+
+paymentcollection:
+  encrypt:
+    key: (.7dd9e60a-1b4f-4f1a-9c11,@%$)
+ribbon:
+  eager-load:
+    enabled: true
+
+
+cache:
+  default:
+    expire-time: 3600  #单位是秒

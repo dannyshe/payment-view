@@ -1,0 +1,25 @@
+SERVER_PORT: 8083
+PAYMENT_ACCEPTANCE_BROKERS: kafkafs001-test001-pub.yy.com:8101,kafkafs001-test002-pub.yy.com:8101,kafkafs001-test003-pub.yy.com:8101
+PAYMENT_ACCEPTANCE_TOPIC: PaymentNotify
+
+
+CONSUL_HOST: 10.178.85.227
+
+
+#redis配置
+REDIS_NODES: grouptest1006-bj-sentinel.yy.com:20068,grouptest1006-sz-sentinel.yy.com:20068,grouptest1006-wx-sentinel.yy.com:20068
+REDIS_MASTER: paymentacceptance_redis_dev_001
+#spring:
+#  redis:
+#    database: 0
+#    host: 58.215.173.135
+#    port: 4051
+#    timeout: 3000
+#    lettuce:
+#      pool:
+#        max-active: 8
+#        max-wait: -1
+#        max-idle: 8
+#        min-idle: 0
+
+
