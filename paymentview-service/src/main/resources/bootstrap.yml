@@ -3,19 +3,6 @@ spring:
     name: paymentview
   main:
     allow-bean-definition-overriding: true
-  cloud:
-    consul:
-      host: middleware.siupay.com
-      port: 8761
-      config:
-        prefix: config/paymentcollection
-        enabled: ${CONSUL_CONFIG_ENABLED:true}
-        format: YAML
-        data-key: ${SPRING_CONSUL_CONFIG_FILE:data}
-        failFast: true
-        profileSeparator: '-'
-        overrideNone: false
-
 
 management:
   endpoints:
@@ -25,17 +12,3 @@ management:
           - "info"
           - "health"
 
-siupay:
-  common:
-    exception:
-      paymentSystem: 88
-
-aws:
-  kms:
-    keyId: d53ecec5-6d92-42bb-beba-745ed0293fef
-    region: ap-southeast-1
-    enabled: true
-    encryptionAlgorithm: "SYMMETRIC_DEFAULT"
-    endpoint:
-      service-endpoint: kms.ap-southeast-1.amazonaws.com
-      signing-region: ap-southeast-1

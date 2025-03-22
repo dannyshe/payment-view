@@ -5,27 +5,17 @@
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%level] [%class:%line] - %m %n</pattern>
         </encoder>
     </appender>
-       
     <appender name="FILE-OUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>./app.log</file>
-        <!--<file>/Users/rhk1/paymentview/app.log</file>-->
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%level] [%class:%line] - %m %n</pattern>
         </encoder>
-               
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>./app.log.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
-            <!-- <fileNamePattern>/Users/rhk1/paymentview/app.logs.%d{yyyy-MM-dd}.log.zip</fileNamePattern>-->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
-           
     </appender>
-
-    cd /data/weblog/java/paymentview/app.log
-    tail -400f app.log
-
     <logger name="io.jaegertracing" level="WARN"/>
-
     <root level="info">
         <appender-ref ref="FILE-OUT"/>
     </root>
