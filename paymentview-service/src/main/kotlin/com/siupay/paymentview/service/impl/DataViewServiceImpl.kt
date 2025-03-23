@@ -4,12 +4,10 @@ import com.siupay.paymentview.domain.ChannelInfo
 import com.siupay.paymentview.dto.*
 import com.siupay.paymentview.enum.ChannelEnum
 import com.siupay.paymentview.enum.CurrencyEnum
-import com.siupay.paymentview.mq.PaymentMQConsume
 import com.siupay.paymentview.service.DataViewService
 import lombok.extern.slf4j.Slf4j
 import org.redisson.api.RList
 import org.redisson.api.RedissonClient
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
 import java.time.LocalDateTime
@@ -24,9 +22,6 @@ import java.util.*
 class DataViewServiceImpl(
     private  var redissonClient: RedissonClient
     ) : DataViewService{
-
-    @Autowired
-    lateinit var paymentMQConsume: PaymentMQConsume
 
     override fun getNumber(request: NumberRequest): NumberResponse? {
         val channelNumberList = ArrayList<ChannelNumber>()

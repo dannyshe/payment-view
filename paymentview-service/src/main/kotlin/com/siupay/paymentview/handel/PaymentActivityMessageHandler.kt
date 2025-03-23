@@ -154,7 +154,8 @@ abstract class PaymentActivityMessageHandler :
         val instant = date.toInstant()
         val zoneId = ZoneId.of("UTC")
         //数据库存储的是utc但是部署的是utc-8  所有数据库转化来的时间戳是按照北京时间转化的 所以要加8
-        val localDateTime = instant.atZone(zoneId).toLocalDateTime().plusHours(8)
+        //val localDateTime = instant.atZone(zoneId).toLocalDateTime().plusHours(8)
+        val localDateTime = instant.atZone(zoneId).toLocalDateTime()
         val df = DateTimeFormatter.ofPattern("yyyyMMddHHmm")
         val time = df.format(localDateTime)
         val key1 = "10min"+time.substring(0,11)+"0"

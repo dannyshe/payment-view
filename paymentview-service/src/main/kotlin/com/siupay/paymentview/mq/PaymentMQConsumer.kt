@@ -23,13 +23,13 @@ import java.util.concurrent.ConcurrentHashMap
 @Slf4j
 @Component
 @EnableBinding(Sink::class)
-class PaymentMQConsume(private var mapper: ObjectMapper,
-                       private var paymentMessageHandler: PaymentMessageHandler,
-                       private var refundMessageHandler: RefundMessageHandler
+class PaymentMQConsumer(private var mapper: ObjectMapper,
+                        private var paymentMessageHandler: PaymentMessageHandler,
+                        private var refundMessageHandler: RefundMessageHandler
 
     ) {
 
-    val log : Logger = LoggerFactory.getLogger(PaymentMQConsume::class.java)
+    val log : Logger = LoggerFactory.getLogger(PaymentMQConsumer::class.java)
 
     companion object {
         private val HANDLER_MAP: MutableMap<String, MessageHandler<PaymentActivityDto>> = ConcurrentHashMap()
@@ -53,11 +53,11 @@ class PaymentMQConsume(private var mapper: ObjectMapper,
             .configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true)
             .configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false)
         log.info("receive message:${message.payload}")
-        val acknowledgment: Acknowledgment = message.headers.get(KafkaHeaders.ACKNOWLEDGMENT, Acknowledgment::class.java)
-        if (acknowledgment == null) {
-            log.warn("acknowledgement  is null")
-            return
-        }
+//        val acknowledgment: Acknowledgment = message.headers.get(KafkaHeaders.ACKNOWLEDGMENT, Acknowledgment::class.java)
+//        if (acknowledgment == null) {
+//            log.warn("acknowledgement  is null")
+//            return
+//        }
         try {
             //处理中
             log.info("start to handle request ${message.headers.id}")
@@ -80,13 +80,13 @@ class PaymentMQConsume(private var mapper: ObjectMapper,
                 }
             }
             if (result) {
-                acknowledgment.acknowledge()
+                //acknowledgment.acknowledge()
             } else {
                 log.error("error failed in metadata $payData")
-                acknowledgment.acknowledge()
+                //acknowledgment.acknowledge()
             }
-       } catch (e: Exception) {
-            log.error("process error ", e)
+       } catch (e: Throwable) {
+            log.error("kafka message process error", e)
         }
     }
 
