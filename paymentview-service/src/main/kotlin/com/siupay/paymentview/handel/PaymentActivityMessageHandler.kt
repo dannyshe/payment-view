@@ -161,7 +161,7 @@ abstract class PaymentActivityMessageHandler :
         val key1 = "10min"+time.substring(0,11)+"0"
         val key2 = "hour"+time.substring(0,10)
         val key3 = "day"+time.substring(0,8)
-        log.info("当前的key为：$key1$key2$key3")
+        log.info("当前的key为：$key1, $key2, $key3")
         val list = ArrayList<String>()
         list.add(key1)
         list.add(key2)
